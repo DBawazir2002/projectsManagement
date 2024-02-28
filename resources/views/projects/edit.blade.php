@@ -11,9 +11,9 @@
         </h3>
     </div>
 
-    <form action="/projects" method="post">
-        @include('projects.form')
+    <form action="{{route('projects.update',$project)}}" method="post">
         @method('PATCH')
+        @include('projects.form')
         <div class="form-group">
             <button type="submit" class="btn btn-primary">انشاء</button>
         </div>

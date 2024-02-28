@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isNan;
+
 class ProjectController extends Controller
 {
     /**
@@ -72,7 +74,7 @@ class ProjectController extends Controller
        $r = Project::where('id','=',$project->id)->update([
             'title' => $project->title,
             'description' => $project->description,
-            'status' => $request->status
+            'status' => ($request->status != null) ? $request->status : $project->status
        ]);
         return redirect('/projects/'.$project->id);
       // return request()->all();
